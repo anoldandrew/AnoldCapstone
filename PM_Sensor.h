@@ -4,11 +4,10 @@
 
 
 #include <SDS011.h>
-//#define pm25_threshold  12 
-//#define pm10_threshold  35 
 
-unsigned long pm25_threshold = 9;
-unsigned long pm10_threshold = 30;
+
+unsigned long pm25_threshold = 12;
+unsigned long pm10_threshold = 35;
 
 
 float pm25,pm10; 
@@ -28,39 +27,8 @@ void pm_setup(){
 
 void pm_loop(){
   error = pm_sensor.read(&pm25, &pm10);
-  if(!error){/*
-    Serial.println("PM2.5 levels are at:  " + String(pm25)); 
-    Serial.println("PM10 levels are at:  " + String(pm10)); *//* 
-   if((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold)){
-      counter_four = 0; 
-      counter_three++; 
-     if(counter_three > 20){
-    Serial.println("fan on coming "); 
-        fan_on(); 
-       counter_three =0; 
-      }
-      
-    }
-   while(! ((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold))){
-   counter_three = 0; 
-   counter_four ++; 
-   if(counter_four > 20){
-    fan_off(); 
-    counter_four=0; 
-   }
-   
-  }*/
-/*
-    if ((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold)){
-       Serial.println("time to open window");
-       fan_on();
-       delay(10000); 
-    }
-  else if (! ((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold))){
-    fan_off(); 
-    delay(10000); 
-  }
-  */
+  if(!error){
+
   constexpr uint32_t work = 20; 
   count = millis() + work*1000; 
   while(static_cast<int32_t>(count - millis())>0){
