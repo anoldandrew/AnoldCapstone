@@ -13,7 +13,6 @@ void setup() {
       fan_setup(); 
       actuator_setup();
       wifi_setup();
-     // MQ_setup(); 
       temp_start();
       pm_setup();
       oled_setup();  
@@ -33,11 +32,15 @@ void loop() {
     else if ( Mq_data < Mq_data_threshold){
       close_window();  
     } 
+    
+    else if ((Mq_data > Mq_data_threshold) && ((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold))){
+          email(); 
+    }
 
     if (temperature > Temperature_threshold){
-  fan_on(); 
+      fan_on(); 
     }
-    else {
+    else if (temperature < Temperature_threshold) {
       fan_off();  
     } 
 }
