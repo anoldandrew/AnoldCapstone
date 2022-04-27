@@ -3,9 +3,6 @@
 #include <WiFi.h>
 const char* ssid = "Anold";
 const char* password = "0123456789"; 
-//WiFiClient client;
-//const char* ssid = "No Wifi";
-//const char* password ="87yu31xjq";
 void wifi_setup(){
   WiFi.begin(ssid,password); 
 /* checking whether WiFi is connected.*/ 
