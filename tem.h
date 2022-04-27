@@ -27,14 +27,5 @@ void dhtloop(){
     Serial.println(F("No readings recorded so far")); 
     return ; 
   }
-/*   
-if (temperature > Temperature_threshold){
-  fan_on(); 
-
-}
-else {
-  fan_off();  
-} 
-*/ 
 }
 #endif 
