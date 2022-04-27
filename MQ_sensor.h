@@ -2,8 +2,7 @@
 #define MQ_sensor_H
 #include "MQ135.h"
 #include "tem.h"
-//#include "PM_Sensor.h"
-//#include "Actuator.h"
+
 
 
 #define PIN_MQ135 34                       //Analog feed we are receiving from the MQ135 carbondioxide gas sensor 
@@ -39,14 +38,7 @@ void MQ_loop()
  
   co2_raw_value = average/10;                            //divide samples by 10
   Mq_data= co2_raw_value;                //get calculated ppm
-/*
-if ((Mq_data > Mq_data_threshold) && !((pm25 >= pm25_threshold) || (pm10 >= pm10_threshold))){
-  open_window(); 
-}
-else if ( Mq_data < Mq_data_threshold){
-  close_window();  
-} 
-*/
+
   Serial.print("MQ135 RZero: ");
   Serial.print(rzero);
   Serial.print("\t Corrected RZero: ");
